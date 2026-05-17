@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scope Solar - Premium Player</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+
+        body {
+            background-color: #1a1a2e;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .solar-glow {
+            box-shadow: 0 0 50px rgba(234, 179, 8, 0.4);
+        }
+
+        .portrait-container {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            max-height: 65vh;
+            margin: 0 auto;
+            background-color: #000;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
+
+    </style>
+</head>
+
+<body class="text-zinc-200 select-none min-h-screen flex flex-col">
+
+    <!-- TOP MARQUEE -->
+    <div class="w-full bg-[#16213e] text-amber-500 text-xs font-black py-2 overflow-hidden sticky top-0 z-50 shadow-md">
+
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            ☀️ Welcome to Scope Solar! It’s time to free Pakistan from expensive electricity. Here you can watch our installations and client review videos. ☀️
+        </marquee>
+
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="w-full px-4 py-4 flex justify-between items-center bg-[#1a1a2e]/95 border-b border-zinc-900 backdrop-blur-md">
+
+        <!-- TITLE -->
+        <h1 class="text-2xl font-black tracking-tighter text-amber-500 font-serif uppercase">
+            SCOPE SOLAR
+        </h1>
+
+        <!-- BIG LOGO -->
+        <div class="flex items-center justify-center">
+
+            <img
+                src="https://i.postimg.cc/9FdXcMy4/imgpsh-fullsize-anim.webp"
+                alt="Scope Solar Logo"
+                class="w-16 h-16 object-contain"
+            >
+
+        </div>
+
+    </nav>
+
+    <!-- MAIN -->
+    <main class="flex-grow pb-8 px-3 max-w-md mx-auto w-full flex flex-col gap-4 mt-4">
+
+        <!-- PLAYER -->
+        <div class="w-full bg-zinc-950 border border-amber-500/30 rounded-2xl overflow-hidden shadow-2xl solar-glow flex flex-col p-2">
+
+            <!-- TITLE -->
+            <div class="p-2 flex justify-between items-center border-b border-zinc-900 mb-2">
+
+                <h2
+                    id="active-title"
+                    class="text-xs font-bold text-zinc-300 truncate max-w-[200px]">
+                    Video 1
+                </h2>
+
+                <span class="bg-amber-500/20 text-amber-400 text-[9px] font-black px-2 py-0.5 rounded border border-amber-500/30">
+                    DIRECT LINK
+                </span>
+
+            </div>
+
+            <!-- VIDEO -->
+            <div class="portrait-container">
+
+                <video
+                    id="jeenaflix-core-player"
+                    controls
+                    autoplay
+                    playsinline
+                    preload="auto">
+
+                    <source
+                        id="video-source"
+                        src="https://github.com/jeenaflix-stack/jeenaflix/releases/download/jkj/C1349.MP4"
+                        type="video/mp4">
+
+                </video>
+
+            </div>
+
+        </div>
+
+        <!-- VIDEO LIST -->
+        <div class="flex flex-col gap-2">
+
+            <h3 class="text-xs font-black tracking-wider uppercase text-zinc-400 text-right px-1">
+                👇 VIDEO LIST
+            </h3>
+
+            <div class="flex flex-col gap-2 w-full">
+
+                <!-- VIDEO 1 -->
+                <button
+                    onclick="changeLiveStream('Video 1', 'https://github.com/jeenaflix-stack/jeenaflix/releases/download/jkj/C1349.MP4')"
+                    class="w-full text-right p-3.5 bg-[#16213e] border border-amber-500/30 rounded-xl flex justify-between items-center active:scale-98 transition">
+
+                    <span class="text-[9px] bg-amber-500 text-zinc-950 font-mono px-2 py-0.5 rounded font-bold">
+                        4K FAST
+                    </span>
+
+                    <span class="text-xs font-bold text-zinc-100">
+                        Video 1
+                    </span>
+
+                </button>
+
+                <!-- VIDEO 2 -->
+                <button
+                    onclick="changeLiveStream('Video 2', 'https://github.com/jeenaflix-stack/jeenaflix/releases/download/jkj/C1349.MP4')"
+                    class="w-full text-right p-3.5 bg-zinc-900 border-zinc-800 rounded-xl flex justify-between items-center active:scale-98 transition">
+
+                    <span class="text-[9px] bg-zinc-800 text-zinc-400 font-mono px-2 py-0.5 rounded font-bold">
+                        HD
+                    </span>
+
+                    <span class="text-xs font-bold text-zinc-100">
+                        Video 2
+                    </span>
+
+                </button>
+
+                <!-- VIDEO 3 -->
+                <button
+                    onclick="changeLiveStream('Video 3', 'https://github.com/jeenaflix-stack/jeenaflix/releases/download/jkj/C1349.MP4')"
+                    class="w-full text-right p-3.5 bg-zinc-900 border-zinc-800 rounded-xl flex justify-between items-center active:scale-98 transition">
+
+                    <span class="text-[9px] bg-zinc-800 text-zinc-400 font-mono px-2 py-0.5 rounded font-bold">
+                        HD
+                    </span>
+
+                    <span class="text-xs font-bold text-zinc-100">
+                        Video 3
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- SCRIPT -->
+    <script>
+
+        const videoPlayer = document.getElementById('jeenaflix-core-player');
+        const videoSource = document.getElementById('video-source');
+
+        function changeLiveStream(title, url) {
+
+            document.getElementById('active-title').innerText = title;
+
+            videoSource.src = url;
+
+            videoPlayer.load();
+
+            videoPlayer.play().catch(function(error) {
+                console.log("Waiting for click", error);
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
