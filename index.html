@@ -20,42 +20,31 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
 .page{
     width:100%;
     min-height:100vh;
-
     background:
     linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.18)),
     url("https://i.postimg.cc/NF4dsmDq/file-000000002ca072469d2a024645a6dfef.png");
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-
     padding-bottom:25px;
 }
 
-/* TOP BAR */
 .top-bar{
     width:100%;
     height:48px;
-
     border-top:1px solid rgba(255,184,0,.85);
     border-bottom:1px solid rgba(255,184,0,.85);
-
     background:rgba(0,0,0,.92);
-
     display:flex;
     align-items:center;
     gap:10px;
-
     padding:0 14px;
-
     position:sticky;
     top:0;
     left:0;
-
     z-index:9999;
 }
 
@@ -106,7 +95,6 @@ body{
     color:#ffb800;
 }
 
-/* MAIN */
 .content{
     width:100%;
     max-width:430px;
@@ -114,7 +102,6 @@ body{
     padding:18px 12px;
 }
 
-/* HERO */
 .hero-row{
     display:flex;
     justify-content:space-between;
@@ -161,7 +148,6 @@ body{
     text-shadow:0 4px 8px rgba(0,0,0,.7);
 }
 
-/* MINI FEATURES */
 .mini-box{
     margin-top:28px;
     width:220px;
@@ -195,7 +181,6 @@ body{
     line-height:1.4;
 }
 
-/* PLAYER */
 .player-card{
     margin:24px auto 0;
     width:360px;
@@ -240,7 +225,6 @@ body{
     }
 }
 
-/* PORTRAIT PLAYER */
 .video-box{
     width:100%;
     aspect-ratio:9/16;
@@ -256,7 +240,6 @@ video{
     background:#000;
 }
 
-/* PLAYER OPTIONS */
 .controls-extra{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -279,7 +262,6 @@ video{
     justify-content:center;
 }
 
-/* FEATURES */
 .features{
     margin-top:28px;
     display:grid;
@@ -323,7 +305,6 @@ video{
     line-height:1.4;
 }
 
-/* VIDEO LIST */
 .video-list{
     margin-top:22px;
 }
@@ -351,7 +332,6 @@ video{
     font-size:10px;
 }
 
-/* EID BAR */
 .eid-bar{
     margin-top:28px;
     border:1px solid #ffb800;
@@ -434,7 +414,6 @@ video{
 
 <div class="page">
 
-    <!-- TOP BAR -->
     <div class="top-bar">
 
         <div class="flash">⚡</div>
@@ -461,7 +440,6 @@ video{
 
     <div class="content">
 
-        <!-- HERO -->
         <div class="hero-row">
 
             <div class="title">
@@ -492,7 +470,6 @@ video{
             for a cleaner and better tomorrow.
         </div>
 
-        <!-- MINI FEATURES -->
         <div class="mini-box">
 
             <div class="mini">
@@ -512,7 +489,6 @@ video{
 
         </div>
 
-        <!-- PLAYER -->
         <div class="player-card">
 
             <div class="player-head">
@@ -536,7 +512,7 @@ video{
                     disablePictureInPicture
                     autoplay
                     playsinline
-                    preload="auto">
+                    preload="metadata">
 
                     <source
                         id="video-source"
@@ -547,14 +523,13 @@ video{
 
             </div>
 
-            <!-- PLAYER OPTIONS -->
             <div class="controls-extra">
 
                 <select onchange="changeSpeed(this.value)">
 
                     <option value="0.5">0.5x</option>
                     <option value="0.75">0.75x</option>
-                    <option value="1" selected>1x</option>
+                    <option value="1" selected>1x Auto</option>
                     <option value="1.25">1.25x</option>
                     <option value="1.5">1.5x</option>
                     <option value="2">2x</option>
@@ -563,7 +538,7 @@ video{
 
                 <a
                     id="download-link"
-                    href=" "
+                    href="https://github.com/scopesolar7874-blip/scopesolar/releases/download/scope1/0518.mp4"
                     download>
 
                     DOWNLOAD
@@ -574,7 +549,6 @@ video{
 
         </div>
 
-        <!-- FEATURES -->
         <div class="features">
 
             <div class="feature">
@@ -631,7 +605,6 @@ video{
 
         </div>
 
-        <!-- VIDEO LIST -->
         <div class="video-list">
 
             <button onclick="changeLiveStream('Latest Video', 'https://github.com/jeenaflix-stack/jeenaflix/releases/download/jkj/C1349.MP3')">
@@ -644,7 +617,6 @@ video{
 
         </div>
 
-        <!-- EID BAR -->
         <div class="eid-bar">
 
             <div>
