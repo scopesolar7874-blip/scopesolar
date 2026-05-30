@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JeenaFlix - Auto-Hide Overlay</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <style>
+    body { background-color: #000; margin: 0; padding: 0; }
+    
+    .stealth-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .yt-iframe-wrapper {
+      position: absolute;
+      top: -15%; left: -5%;
+      width: 110%; height: 130%;
+      pointer-events: none;
+    }
+
+    .click-shield {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.2);
+      transition: opacity 0.5s ease;
+      cursor: pointer;
+    }
+
+    .is-playing .click-shield {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .custom-play-btn {
+      background-color: #fbbf24;
+      padding: 15px;
+      border-radius: 50%;
+    }
+
+    .fs-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 60;
+      color: white;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .is-playing .fs-btn { opacity: 0; }
+    .stealth-container:hover .fs-btn { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <div id="player-container" class="stealth-container">
+    <div class="yt-iframe-wrapper">
+      <div id="yt-player"></div>
+    </div>
+
+    <div class="click-shield" id="shield" onclick="togglePlayPause()">
+      <div class="custom-play-btn" id="play-btn">
+        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+
+    <div class="fs-btn" onclick="goFullscreen()">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="white"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+    </div>
+  </div>
+
+  <script>
+    let player;
+    const container = document.getElementById('player-container');
+    const shield = document.getElementById('shield');
+    const playBtn = document.getElementById('play-btn');
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('yt-player', {
+        videoId: '-Pkdo6_tEzg',
+        playerVars: { 'controls': 0, 'modestbranding': 1, 'rel': 0 },
+        events: {
+          'onStateChange': onStateChange
+        }
+      });
+    }
+
+    function onStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        container.classList.add('is-playing');
+      } else {
+        container.classList.remove('is-playing');
+      }
+    }
+
+    function togglePlayPause() {
+      if (player.getPlayerState() === 1) {
+        player.pauseVideo();
+      } else {
+        player.playVideo();
+      }
+    }
+
+    function goFullscreen() {
+      if (container.requestFullscreen) container.requestFullscreen();
+    }
+  </script>
+</body>
+</html>
